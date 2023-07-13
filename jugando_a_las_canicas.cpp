@@ -13,8 +13,8 @@ using namespace std;
 // TYPEDEFS
 /*
 * Compactamos los datos del jugador y sus canicas en un solo tipo de dato
-* para no tener que generar m·s par·metros en las funciones y que sea m·s
-* f·cil de entender.
+* para no tener que generar m√°s par√°metros en las funciones y que sea m√°s
+* f√°cil de entender.
 */
 /*
 * By using a datatype for both player and player's marbles information, it's
@@ -92,34 +92,34 @@ int main() {
 
 // SPANISH-------------------------------------------------------
 /* ECUACIONES DE RECURRENCIA:
-* Observamos que nuestro problema coge el tamaÒo original
+* Observamos que nuestro problema coge el tama√±o original
 * del problema y lo va reduciendo en subproblemas mas pe
-* queÒos de menor tamaÒo.
+* que√±os de menor tama√±o.
 *
 * Dada la generalizacion de las ecuaciones de recurrencia
 * de algoritmos recursivos y el estudio de su coste, sabemos
 * que la ecuacion de recurrencia de un algoritmo recursivo
-* donde se reduce el tamaÒo del problema, es:
+* donde se reduce el tama√±o del problema, es:
 *
-*		| c0						0 <= n <= n0
-*	T(n)|
+*		| c0				0 <= n <= n0
+*	T(n)	|
 *		| a * T(n / b) + c1 * n^k	n0 <= n
 *
 * Donde:
-*	n ::= el tamaÒo del problema en la llamada actual
+*	n ::= el tama√±o del problema en la llamada actual
 *	a ::= numero de llamadas recursivas dentro del algoritmo
-*	b ::= elementos quitados del tamaÒo del problema
+*	b ::= elementos quitados del tama√±o del problema
 *	k ::= numero tal que n^k representa la complejidad del codigo no recursivo del algoritmo
 *
 * Aplicandolo a nuestro caso particular, si definimos:
 *
-*	n::= tamaÒo del vector visible en la llamada actual
+*	n::= tama√±o del vector visible en la llamada actual
 *
 * Concluimos que la ecuacion de recurrencia es:
 *
-*		| c0					  n = 1
-*	T(n)|
-*		| 2 * T(n / 2) + c1 * n^0 n > 1
+*		| c0				n = 1
+*	T(n)	|
+*		| 2 * T(n / 2) + c1 * n^0 	n > 1
 */
 /* COMPLEJIDAD DEL ALGORITMO:
 * Dada la generalizacion de las ecuaciones de recurrencia de
@@ -213,22 +213,22 @@ tJugador resolver(
 		* duelos.
 		* 
 		*		 1	-			   - 5
-		*			  |-		-|
-		*		 2	-	 |	  |	   - 6
-		*				 |-::-|
-		*		 3	-	 |    |	   - 7
-		*			  |-		-|
+		*			  |-----	 --------|
+		*		 2	-	 |	|	   - 6
+		*				 | -::-	|
+		*		 3	-	 |    	|	   - 7
+		*			  |-----	 ---------|
 		*		 4	-			   - 8
 		* 
 		* Podemos entender que, para encontrar a los jugadores para el duelo
 		* actual, necesitamos saber quien ha ganado los duelos anteriores. Al
 		* dividir a los jugadores en parejas y con ayuda del esquema, podemos
 		* llamar a esos duelos anteriores como el "duelo de la izquierda" que
-		* nos dar·n un ganador, y el "duelo de la derecha" que nos dar· otro.
+		* nos dar√°n un ganador, y el "duelo de la derecha" que nos dar√° otro.
 		* 
 		*		Ganador_izquierda -
-		*						    |- Ganador_siguiente
-		*    	  Ganador_derecha - 
+		*				   |- Ganador_siguiente
+		*    	  	Ganador_derecha --
 		* 
 		* Ademas, vemos que esta division de izquierda y derecha nos sirve
 		* tanto para un duelo concreto, como para todo el torneo o un 
@@ -238,7 +238,7 @@ tJugador resolver(
 		* recursivas para hallarlos: una para la parte "izquierda" de los
 		* jugadores, y otra para la parte "derecha" de los jugadores
 		* 
-		* Con eso, reducimos el tamaÒo del problema en cada llamada a la mitad.
+		* Con eso, reducimos el tama√±o del problema en cada llamada a la mitad.
 		* 
 		* El campeon sera aquel jugador que gane todos los duelos en los que
 		* participe.
@@ -248,11 +248,11 @@ tJugador resolver(
 		* duels.
 		* 
 		*		 1	-			   - 5
-		*			  |-		-|
-		*		 2	-	 |	  |	   - 6
-		*				 |-::-|
-		*		 3	-	 |    |	   - 7
-		*			  |-		-|
+		*			  |-----	 --------|
+		*		 2	-	 |	|	   - 6
+		*				 | -::-	|
+		*		 3	-	 |    	|	   - 7
+		*			  |-----	 ---------|
 		*		 4	-			   - 8
 		* 
 		* Its understandable to say that, to find the players for the current
@@ -262,8 +262,8 @@ tJugador resolver(
 		* "right duels" will give us another one.
 		* 
 		*		 Left_Winner -
-		*					   |- Next_Winner
-		*    	Right_Winner - 
+		*				|- Next_Winner
+		*    		Right_Winner -
 		* 
 		* By knowing that each duel is composed by two players, we'll need
 		* 2 recursive calls to find them: one for the "left" side of the players
@@ -289,7 +289,7 @@ tJugador resolver(
 		}
 
 		// Devolvemos el ganador a la anterior llamada
-		// we return the winner to the previous call
+		// We return the winner to the previous call
 
 		return solFinal;
 	}
@@ -312,8 +312,8 @@ tJugador resolver2(
 		tJugador solIzq = resolver2(v, ini, mediatriz);
 		tJugador solDer = resolver2(v, mediatriz + 1, fin);
 		/*
-		* Si no aÒadimos el +1, estariamos analizando 2 veces
-		* la posiciÛn v[mediatriz]. Eso rompe el algoritmo. Da
+		* Si no a√±adimos el +1, estariamos analizando 2 veces
+		* la posici√≥n v[mediatriz]. Eso rompe el algoritmo. Da
 		* una solucion erronea o una recursion infinita.
 		*/
 		/*
